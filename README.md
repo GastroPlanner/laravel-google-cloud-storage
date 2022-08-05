@@ -10,6 +10,23 @@ This package is a wrapper bridging [flysystem-google-storage](https://github.com
 
 ## Installation
 
+## composer.json
+
+Add this code to your composer.json
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "git@github.com:GastroPlanner/gastroplanner-sso-integration.git"
+    },
+    {
+        "type": "vcs",
+        "url": "git@github.com:GastroPlanner/flysystem-google-cloud-storage.git"
+    }
+]
+```
+
 ```bash
 composer require gastroplanner/laravel-google-cloud-storage
 ```
