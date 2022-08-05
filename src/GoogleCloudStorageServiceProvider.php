@@ -26,7 +26,7 @@ class GoogleCloudStorageServiceProvider extends ServiceProvider
     {
         $cache = Arr::pull($config, 'cache');
 
-        $config = Arr::only($config, ['visibility', 'disable_asserts', 'url']);
+        $config = Arr::only($config, ['visibility', 'disable_asserts', 'url', 'acl']);
 
         if ($cache) {
             $adapter = new CachedAdapter($adapter, $this->createCacheStore($cache));
@@ -92,7 +92,7 @@ class GoogleCloudStorageServiceProvider extends ServiceProvider
             ]);
         }
 
-        if (! is_array($keyFile)) {
+        if (!is_array($keyFile)) {
             $keyFile = [];
         }
         return new StorageClient([
