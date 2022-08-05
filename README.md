@@ -5,15 +5,13 @@ A Google Cloud Storage filesystem for Laravel.
 [![Author](http://img.shields.io/badge/author-@superbalist-blue.svg?style=flat-square)](https://twitter.com/superbalist)
 [![Build Status](https://img.shields.io/travis/Superbalist/laravel-google-cloud-storage/master.svg?style=flat-square)](https://travis-ci.org/Superbalist/laravel-google-cloud-storage)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/gastroplanner/laravel-google-cloud-storage.svg?style=flat-square)](https://packagist.org/packages/superbalist/laravel-google-cloud-storage)
-[![Total Downloads](https://img.shields.io/packagist/dt/gastroplanner/laravel-google-cloud-storage.svg?style=flat-square)](https://packagist.org/packages/superbalist/laravel-google-cloud-storage)
 
-This package is a wrapper bridging [flysystem-google-storage](https://github.com/Superbalist/flysystem-google-storage) into Laravel as an available storage disk.
+This package is a wrapper bridging [flysystem-google-storage](https://github.com/Gastroplanner/flysystem-google-storage) into Laravel as an available storage disk.
 
 ## Installation
 
 ```bash
-composer require superbalist/laravel-google-cloud-storage
+composer require gastroplanner/laravel-google-cloud-storage
 ```
 
 If you are on Laravel 5.4 or earlier, then register the service provider in app.php
@@ -38,6 +36,7 @@ Add a new disk to your `filesystems.php` config
     'path_prefix' => env('GOOGLE_CLOUD_STORAGE_PATH_PREFIX', null), // optional: /default/path/to/apply/in/bucket
     'storage_api_uri' => env('GOOGLE_CLOUD_STORAGE_API_URI', null), // see: Public URLs below
     'visibility' => 'public', // optional: public|private
+    'acl' => '', //optional: uniform|fine-grained
 ],
 ```
 
