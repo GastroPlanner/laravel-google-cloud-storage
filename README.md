@@ -5,8 +5,8 @@ A Google Cloud Storage filesystem for Laravel.
 [![Author](http://img.shields.io/badge/author-@superbalist-blue.svg?style=flat-square)](https://twitter.com/superbalist)
 [![Build Status](https://img.shields.io/travis/Superbalist/laravel-google-cloud-storage/master.svg?style=flat-square)](https://travis-ci.org/Superbalist/laravel-google-cloud-storage)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/superbalist/laravel-google-cloud-storage.svg?style=flat-square)](https://packagist.org/packages/superbalist/laravel-google-cloud-storage)
-[![Total Downloads](https://img.shields.io/packagist/dt/superbalist/laravel-google-cloud-storage.svg?style=flat-square)](https://packagist.org/packages/superbalist/laravel-google-cloud-storage)
+[![Packagist Version](https://img.shields.io/packagist/v/gastroplanner/laravel-google-cloud-storage.svg?style=flat-square)](https://packagist.org/packages/superbalist/laravel-google-cloud-storage)
+[![Total Downloads](https://img.shields.io/packagist/dt/gastroplanner/laravel-google-cloud-storage.svg?style=flat-square)](https://packagist.org/packages/superbalist/laravel-google-cloud-storage)
 
 This package is a wrapper bridging [flysystem-google-storage](https://github.com/Superbalist/flysystem-google-storage) into Laravel as an available storage disk.
 
@@ -17,6 +17,7 @@ composer require superbalist/laravel-google-cloud-storage
 ```
 
 If you are on Laravel 5.4 or earlier, then register the service provider in app.php
+
 ```php
 'providers' => [
     // ...
@@ -44,14 +45,15 @@ Add a new disk to your `filesystems.php` config
 
 The Google Client uses a few methods to determine how it should authenticate with the Google API.
 
-1. If you specify a path in the key `key_file` in  disk config, that json credentials file will be used.
+1. If you specify a path in the key `key_file` in disk config, that json credentials file will be used.
 2. If the `GOOGLE_APPLICATION_CREDENTIALS` env var is set, it will use that.
-   ```php
-   putenv('GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json');
-   ```
+    ```php
+    putenv('GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json');
+    ```
 3. It will then try load the key file from a 'well known path':
-   * windows: %APPDATA%/gcloud/application_default_credentials.json
-   * others: $HOME/.config/gcloud/application_default_credentials.json
+
+    - windows: %APPDATA%/gcloud/application_default_credentials.json
+    - others: $HOME/.config/gcloud/application_default_credentials.json
 
 4. If running in **Google App Engine**, the built-in service account associated with the application will be used.
 5. If running in **Google Compute Engine**, the built-in service account associated with the virtual machine instance will be used.
@@ -73,7 +75,8 @@ The Google Client uses a few methods to determine how it should authenticate wit
 ### Public URLs
 
 The adapter implements a `getUrl($path)` method which returns a public url to a file.
->**Note:** Method available for Laravel 5.2 and higher. If used on 5.1, it will throw an exception.
+
+> **Note:** Method available for Laravel 5.2 and higher. If used on 5.1, it will throw an exception.
 
 ```php
 $disk = Storage::disk('gcs');
@@ -82,6 +85,7 @@ $url = $disk->url('folder/my_file.txt');
 ```
 
 If you configure a `path_prefix` in your config:
+
 ```php
 $disk = Storage::disk('gcs');
 $url = $disk->url('folder/my_file.txt');
@@ -89,6 +93,7 @@ $url = $disk->url('folder/my_file.txt');
 ```
 
 If you configure a custom `storage_api_uri` in your config:
+
 ```php
 $disk = Storage::disk('gcs');
 $url = $disk->url('folder/my_file.txt');
